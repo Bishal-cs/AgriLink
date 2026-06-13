@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="AgriLink — India's digital agricultural supply-chain platform connecting farmers, distributors, and cold storage owners. Reduce crop wastage, improve farmer income." />
+  <meta name="keywords" content="agriculture, farming, supply chain, cold storage, distributors, India, AgriLink" />
+  <meta name="author" content="AgriLink" />
+  <meta name="theme-color" content="#059669" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="AgriLink — Digital Agricultural Supply Chain Platform" />
+  <meta property="og:description" content="India's digital agricultural supply-chain platform connecting farmers, distributors, and cold storage owners. Reduce crop wastage, improve farmer income." />
+  <meta property="og:url" content="https://agrilink.app" />
+  <meta property="og:image" content="/assets/img/og-banner.png" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="AgriLink — Digital Agricultural Supply Chain" />
+  <meta name="twitter:description" content="Connecting farmers, distributors, and cold storage owners to reduce crop wastage." />
+
+  <title>AgriLink — Digital Agricultural Supply Chain Platform</title>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/assets/css/components.css" />
+  <link rel="stylesheet" href="/assets/css/dashboard.css" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌾</text></svg>" />
+
+  <style>
+    /* Initial loading state */
+    #app-loader {
+      position: fixed;
+      inset: 0;
+      background: var(--bg-secondary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 1rem;
+      z-index: 9999;
+      transition: opacity 0.3s ease;
+    }
+    #app-loader.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+    #app-loader .loader-brand {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--primary-700);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    #app-loader .loader-spinner {
+      width: 32px;
+      height: 32px;
+      border: 3px solid var(--gray-200);
+      border-top-color: var(--primary-500);
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+    }
+  </style>
+</head>
+<body>
+  <!-- App Loading Screen -->
+  <div id="app-loader">
+    <div class="loader-brand">🌾 AgriLink</div>
+    <div class="loader-spinner"></div>
+  </div>
+
+  <!-- App Container -->
+  <div id="app"></div>
+
+  <!-- App Script -->
+  <script type="module" src="/assets/js/router.js"></script>
+
+  <script>
+    // Hide loader once app renders
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        const loader = document.getElementById('app-loader');
+        if (loader) loader.classList.add('hidden');
+        setTimeout(() => loader?.remove(), 300);
+      }, 500);
+    });
+  </script>
+</body>
+</html>
